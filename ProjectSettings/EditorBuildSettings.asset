@@ -4,7 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/StylizedHandPaintedTavern/Demo/Demo_Scene/Demo_Scene.unity
+    guid: e1605cc6f34ec054095557777cfdec03
   m_configObjects:
+    Unity.XR.PXR.Settings: {fileID: 11400000, guid: 62ab5f8edf805b941b9929aa4b3a8fc4, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3ea8991123fbf48dcabf67fac5462fca, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 2bcf50ca7a335ea40b37e3bcf05eea52, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 91cfd67eeb90f6d4f940daa317732375, type: 2}

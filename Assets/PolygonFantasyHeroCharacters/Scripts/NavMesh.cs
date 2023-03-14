@@ -17,29 +17,30 @@ public class NavMesh : MonoBehaviour
     private float distanceToExit;
     public Transform target;
     private Animator myAnimator;
+   
 
-    [SerializeField] private GameObject containerGameObject;
+
+    public AudioSource audioSource1;
+    public AudioSource audioSource2;
+    private bool AudioStart = false;
+    private bool SecondAudio = false;
+    private float aidioTime = 10f;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         myAnimator = GetComponent<Animator>();
-        containerGameObject.SetActive(false);
+
+        
+        
+
 
     }
 
     private void Update()
 
     {
-        if (containerGameObject.activeInHierarchy == true)
-        {
-            moneyTime -= Time.deltaTime;
-            if (moneyTime < 0)
-            {
-                containerGameObject.SetActive(false);
-                moneyTime = 2f;
-            }
-        }
+        
        
         timeBeforeStart -= Time.deltaTime;
         if (timeBeforeStart < 0)
@@ -65,10 +66,20 @@ public class NavMesh : MonoBehaviour
             distanceToExit = Vector3.Distance(GameObject.Find("Cube").transform.position, transform.position);
             if (distanceToExit < 1)
             {
-                Debug.Log("Im In");
+                
                 myAnimator.SetBool("IsRunning", false);
                 
             }
+
+            if (AudioStart == true)
+            {
+                aidioTime -= Time.deltaTime;
+                if (aidioTime< 0)
+                {
+                    SecondAudio = true;
+                }
+            }
+            
         }
         
         
@@ -93,8 +104,18 @@ public class NavMesh : MonoBehaviour
 
     public void Interct(Transform intertransform)
     {
-        containerGameObject.SetActive(true);
-        
+        if (AudioStart == false)
+        {
+            audioSource1.Play();
+            AudioStart = true;
+
+        }
+        if (SecondAudio == true)
+        {
+            audioSource1.Stop();
+            audioSource2.Play();
+        }
+
         Debug.Log("Interact");
     }
 }

@@ -9,6 +9,8 @@ EditorBuildSettings:
     path: Assets/StylizedHandPaintedTavern/Demo/Demo_Scene/Demo_Scene.unity
     guid: e1605cc6f34ec054095557777cfdec03
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 129c6de91be68564f96335d5b3461a7d, type: 2}
     Unity.XR.PXR.Settings: {fileID: 11400000, guid: 62ab5f8edf805b941b9929aa4b3a8fc4, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3ea8991123fbf48dcabf67fac5462fca, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 91cfd67eeb90f6d4f940daa317732375, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 0d0f95e25a5a60e479ab61a0d22403cb, type: 2}

@@ -7,6 +7,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject containerGameObject;
     [SerializeField] private Interactable playerInteract;
 
+
     private void Update()
     {
         if (playerInteract.GetInteractableObject() != null)
@@ -22,6 +23,9 @@ public class PlayerUI : MonoBehaviour
     private void Show()
     {
         containerGameObject.SetActive(true);
+        containerGameObject.transform.LookAt(playerInteract.transform.position);
+        containerGameObject.transform.rotation *= Quaternion.Euler(0, 180f, 0);
+
     }
     
     private void Hide()

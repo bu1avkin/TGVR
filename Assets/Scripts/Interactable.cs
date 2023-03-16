@@ -29,7 +29,7 @@ public class Interactable : MonoBehaviour
         bool triggerAxis = xrController.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out pressedTrigger);
         
 
-        if (pressedTrigger > triggerThresholdValue && previousTriggerAxis <= triggerThresholdValue)
+        if ((pressedTrigger > triggerThresholdValue && previousTriggerAxis <= triggerThresholdValue) || Input.GetKeyDown(KeyCode.G))
         {
             float interactRange = 2f;
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);

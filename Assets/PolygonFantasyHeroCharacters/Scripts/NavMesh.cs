@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +12,6 @@ public class NavMesh : MonoBehaviour
 
     [SerializeField] private float timeLeft = 20f;
     [SerializeField] private float timeBeforeStart = 20f;
-    [SerializeField] private float moneyTime = 2f;
 
     private float distance;
     private float distanceToExit;
@@ -24,15 +24,21 @@ public class NavMesh : MonoBehaviour
     public AudioSource audioSource2;
     private bool AudioStart = false;
     private bool SecondAudio = false;
-    private float aidioTime = 10f;
+    private bool AudioStartSec = false;
+    public float aidioTime = 10f;
+    public float aidioTimetwo = 10f;
+    public GameObject displayTextHide;
+    public GameObject displayTextShow;
+    bool EndSecond = false;
+    public GameObject playerInteract;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         myAnimator = GetComponent<Animator>();
+        displayTextShow.SetActive(false);
 
-        
-        
+
 
 
     }
@@ -77,6 +83,22 @@ public class NavMesh : MonoBehaviour
                 if (aidioTime< 0)
                 {
                     SecondAudio = true;
+                    audioSource1.Stop();
+                    displayTextHide.SetActive(false);
+                    displayTextShow.SetActive(true);
+                    displayTextShow.transform.LookAt(playerInteract.transform.position);
+                    displayTextShow.transform.rotation *= Quaternion.Euler(0, 180f, 0);
+                    Debug.Log("Hello from Secod Audio");
+                    
+                }
+            }
+            if (AudioStartSec == true)
+            {
+                displayTextShow.SetActive(false);
+                aidioTimetwo -= Time.deltaTime;
+                if (aidioTimetwo < 0)
+                {
+                    EndSecond = true;
                 }
             }
             
@@ -112,8 +134,21 @@ public class NavMesh : MonoBehaviour
         }
         if (SecondAudio == true)
         {
-            audioSource1.Stop();
-            audioSource2.Play();
+            
+            if (AudioStartSec == false)
+            {
+                audioSource2.Play();
+                displayTextShow.SetActive(false);
+
+
+                AudioStartSec = true;
+
+                if (EndSecond == true)
+                {
+                    displayTextShow.SetActive(false);
+                }
+            }
+            
         }
 
         Debug.Log("Interact");
